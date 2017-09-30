@@ -1,7 +1,7 @@
 # Gramcracker for chrome
 ### Michael Kabatek (c) 2017
 
-1. [CJS plugin for Google Chrome](https://chrome.google.com/webstore/detail/custom-javascript-for-web/poakhlngfciodnhlhhgnaaelnpjljija?hl=en)
+1. Download [CJS plugin for Google Chrome](https://chrome.google.com/webstore/detail/custom-javascript-for-web/poakhlngfciodnhlhhgnaaelnpjljija?hl=en)
 
 2. Edit the script var homeUrl = "https://instagram.com/<your_instagram_username>";
 
