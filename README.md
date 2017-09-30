@@ -3,9 +3,11 @@
 
 1. Download [CJS plugin for Google Chrome](https://chrome.google.com/webstore/detail/custom-javascript-for-web/poakhlngfciodnhlhhgnaaelnpjljija?hl=en)
 
-2. Edit the script var homeUrl = "https://instagram.com/<your_instagram_username>";
-
-3. Edit var masterUrlList = [ ... ] to contain the instagram accounts you want to follow/unfollow
+2. Edit the script to user your account 
+```javascript
+var homeUrl = "https://instagram.com/<your_instagram_username>";
+```
+3. Edit `var masterUrlList = [ ... ]` to contain the instagram accounts you want to follow/unfollow
 
 4. Open the Chrome developer console: Command + Option + J (on OSX)
 
