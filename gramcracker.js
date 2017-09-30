@@ -7,7 +7,7 @@ var myFollowerInt;
 
 //Global setting parameters
 var homeName = "noisapp";
-var homeUrl = "https://instagram.com/noisapp";
+var homeUrl = "https://instagram.com/<your_instagram_username>";
 var globalIndex;
 
 
