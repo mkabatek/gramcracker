@@ -5,6 +5,7 @@
 
 2. Edit the script to user your account 
 ```javascript
+var homeName = "<your_instagram_username>";
 var homeUrl = "https://instagram.com/<your_instagram_username>";
 ```
 3. Edit `var masterUrlList = [ ... ]` to contain the instagram accounts you want to follow/unfollow
