@@ -1,12 +1,11 @@
-// Here You can type your custom JavaScript...//Instagram classes
-var followersBoxClass = document.getElementsByClassName("_s53mj");
-var followingBoxClass = document.getElementsByClassName("_bkw5z");
+var followersBoxClass = document.getElementsByClassName("_fd86t");
+var followingBoxClass = document.getElementsByClassName("_fd86t");
 
 //Get int for number of people to unfollow calculation
 var myFollowerInt;
 
 //Global setting parameters
-var homeName = "noisapp";
+var homeName = "<your_instagram_username>";
 var homeUrl = "https://instagram.com/<your_instagram_username>";
 var globalIndex;
 
@@ -61,13 +60,13 @@ var masterUrlList = [
 
 ];
 //looping parameters 
-var NumberItr = 2500;
+var NumberItr = 400;
 var BaseFollowers = 770;
 var tMax = 120000; //follow/unfollow time max milliseconds
 var tMin = 60000; //follow/unfollow time min milliseconds
 
-var stMax = 500; //scroll time max milliseconds
-var stMin = 100; //scroll time min milliseconds
+var stMax = 2000; //scroll time max milliseconds
+var stMin = 1000; //scroll time min milliseconds
 
 
 if(localStorage.getItem('indexObject') == null || localStorage.getItem('indexObject') == "null" || localStorage.getItem('indexObject') == "undefined"){
@@ -144,8 +143,8 @@ function f(){
 //follow function
 function follow(){
 
-	var buttonClassString = "_ah57t _84y62 _i46jh _rmr7s";
-	var scrollClassString = "_4gt3b";
+	var buttonClassString = "_qv64e _gexxb _4tgw8 _njrw0";
+	var scrollClassString = "_gs38e";
 
 	var elem = document.getElementsByClassName(buttonClassString);
 	var x = document.getElementsByClassName(scrollClassString);                    //  set your counter to number of elements
@@ -246,8 +245,8 @@ function follow(){
 //unfollow function
 function unfollow (){
 
-	var buttonClassString = "_ah57t _6y2ah _i46jh _rmr7s";
-	var scrollClassString = "_4gt3b";
+	var buttonClassString = "_qv64e _t78yp _4tgw8 _njrw0";
+	var scrollClassString = "_gs38e";
 
 	var elem = document.getElementsByClassName(buttonClassString);
 	var x = document.getElementsByClassName(scrollClassString);                    //  set your counter to number of elements
