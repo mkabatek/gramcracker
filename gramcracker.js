@@ -25,14 +25,15 @@ var homeUrl = rootUrl + homeName;
 var globalIndex;
 
 //looping parameters 
-var NumberItr     = 2;              //Total number of people you want to follow/unfollow
+var NumberItr     = 3;              //Total number of people you want to follow/unfollow
 var BaseFollowers = 500;            //Base number of followers you want to keep
-var tMax          = 120000;         //follow/unfollow time max
-var tMin          = 60000;          //follow/unfollow time min
+var tMax          = 30000;         //follow/unfollow time max
+var tMin          = 15000;          //follow/unfollow time min
 var delta         = (tMax - tMin);  //Time interval between follow/unfollow
 var stMax         = 500;            //Scroll time max
 var stMin         = 100;            //Scroll time min
 var T             = 0;              //Total elapsed time
+var scrollLength  = 100;
 
 //Accounts you want to follow
 var masterUrlList = [
@@ -160,7 +161,7 @@ var scroll = function(currentElements, iterations, boxType) {
         console.log('delta t: ' + dt);
         console.log('T: ' + T);
         console.log('Elements in list: ' + currentElements.length);	  
-        x[0].scrollTop += 10000;
+        x[0].scrollTop += scrollLength;
         
         if (currentElements.length < iterations - 1) { 
             currentElements = document.getElementsByClassName(boxType);      
