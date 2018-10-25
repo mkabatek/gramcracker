@@ -16,7 +16,10 @@ var THREE_SECOND_DELAY = 3000
 
 //Get int for number of people to unfollow calculation
 var myInitialFollowers;
+var othersInitialFollowers;
 var itr;
+var sampleArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var placeHolder = sampleArray.length;
 
 //Global setting parameters
 var rootUrl = "https://instagram.com/" 
@@ -25,75 +28,42 @@ var homeUrl = rootUrl + homeName;
 var globalIndex;
 
 //looping parameters 
-var NumberItr     = 3;              //Total number of people you want to follow/unfollow
-var BaseFollowers = 500;            //Base number of followers you want to keep
-var tMax          = 30000;         //follow/unfollow time max
-var tMin          = 15000;          //follow/unfollow time min
+var NumberItr     = 800;              //Total number of people you want to follow/unfollow
+var BaseFollowers = 450;            //Base number of followers you want to keep
+var tMax          = 120000;         //follow/unfollow time max
+var tMin          = 60000;          //follow/unfollow time min
 var delta         = (tMax - tMin);  //Time interval between follow/unfollow
 var stMax         = 500;            //Scroll time max
 var stMin         = 100;            //Scroll time min
 var T             = 0;              //Total elapsed time
 var scrollLength  = 100;
 
+const allEqual = arr => arr.every( v => v === arr[0] )
+
 //Accounts you want to follow
 var masterUrlList = [
 
-"highcascade",
-"perisher_parks",
-"rockstarenergy",
-"electric_snow",
-"lifeproof",
-"alek_oestreng",
-"hannahteter",
-"cardronanz",
-"jamieanderson",
-"thrashermag",
-"transworldskate",
-"twsnow",
-"newschoolers",
-"christyprior",
-"snowboardermag",
-"toohardsquad",
-"bonesbearings",
-"vansgirls",
-"vansskate",
-"vanssnow",
-"chrisrussell_mbk",
-"volcomskate",
-"berrics",
-"redbull",
-"nikesb",
-"monsterenergy",
-"volklskis",
-"burtonsnowboards",
-"burtongirls",
-"atomicski",
-"keystonea51",
-"woodwardcopper",
-"windellscamp",
-"allyshale",
-"lindseyvonn",
-"jacksonhole",
-"steepskiing",
-"strangenotes",
-"skullcandy",
-"gopro",
-"gnusnowboards",
-"romesnowboards",
-"lynseydyer",
-"skiingmagazine",
-"freeskiermagazine",
-"jameswoodsy",
-"freepeople",
-"outdoortech",
-"downhilladiction",
-"bronze56k",
-"snowparklaax"
+"skate.explore",
+"cryanbum",
+"noeborocz",
+"ashleyaf99",
+"thecameltail",
+"tomcatberry",
+"norathenorwal",
+"cookiegrinder13",
+"emet.baker",
+"taylordehart",
+"nameinbloodsk8boards",
+"vetschtable",
+"666_rips",
+"milimeter_peeter",
+"tomcatberry"
 
 ];
 
 //follow/Unfollow function
 var followUnfollow = function(elem, itr, boxType){
+    var T = 0;
     scroll(elem, itr, boxType);
 }
 
@@ -150,7 +120,6 @@ var scroll = function(currentElements, iterations, boxType) {
 	var timeMin   = stMin; 
 	var delta = (timeMax - timeMin); 
 	var dt = Math.random() * delta + timeMin;
-	var T = 0;
 					 
 	console.log('delta t: ' + dt);
     console.log('T: ' + T);
@@ -160,15 +129,30 @@ var scroll = function(currentElements, iterations, boxType) {
     setTimeout(function () {    //  call a 3s setTimeout when the loop is called
         console.log('delta t: ' + dt);
         console.log('T: ' + T);
-        console.log('Elements in list: ' + currentElements.length);	  
+        console.log('Elements in list: ' + currentElements.length);
+        console.log('Total iterations set: ' + NumberItr)
+        console.log('Iterations: ' + iterations)
         x[0].scrollTop += scrollLength;
+        sampleArray[placeHolder] = currentElements.length
+        if (placeHolder <= 0 ) {
+            placeHolder = sampleArray.length
+        }
+        placeHolder = placeHolder - 1
         
+        console.log('Sample array: ' + sampleArray)
+        console.log('Sample length: ' + sampleArray.length)
+        console.log('Place holder: ' + placeHolder)
+    
+        if (allEqual(sampleArray) && sampleArray[0] != 0) {
+            iterations = sampleArray[0]
+        }
+
         if (currentElements.length < iterations - 1) { 
             currentElements = document.getElementsByClassName(boxType);      
-            scroll(collectionToArray(currentElements, boxType), iterations, boxType);             //  ..  again which will trigger another 
+            scroll(collectionToArray(currentElements, boxType), iterations, boxType); 
         } else {
             console.log('############## scroll finished ################')
-            followerLoop(currentElements, currentElements.length, iterations); 
+            followerLoop(currentElements, currentElements.length - 1, iterations); 
         }                      
     }, dt)
 }
@@ -197,6 +181,8 @@ var interval = setInterval(function() {
 		clearInterval(interval);
 		console.log('Good to go');
         myInitialFollowers = Number(followingBoxClass.innerHTML.replace(',',''));
+        otherInitialFollowers = Number(followersBoxClass.innerHTML.replace(',',''));
+        
 		//check if we are at home, if so unfollow accounts
 		if(window.location.href.indexOf(homeName) > -1) {
             //At this point our personal instagram page has been loaded 
