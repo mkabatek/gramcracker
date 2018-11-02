@@ -152,7 +152,7 @@ var scroll = function(currentElements, iterations, boxType) {
             scroll(collectionToArray(currentElements, boxType), iterations, boxType); 
         } else {
             console.log('############## scroll finished ################')
-            followerLoop(currentElements, currentElements.length - 1, iterations); 
+            followerLoop(currentElements, currentElements.length - 1, iterations - 1); 
         }                      
     }, dt)
 }
