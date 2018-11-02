@@ -1,8 +1,8 @@
 //Instagram classes
 var followBoxString           = "g47SY"
 var unfollowModalButtonString = "aOOlW -Cab_   "
-var followButtonString        = "oF4XW sqdOP  L3NKy      "
-var unFollowButtonString      = "oF4XW sqdOP  L3NKy   _8A5w5   "
+var followButtonString        = "_0mzm- sqdOP  L3NKy       "
+var unFollowButtonString      = "_0mzm- sqdOP  L3NKy   _8A5w5    "
 var scrollBoxString           = "isgrP"
 
 var followersBoxClass = document.getElementsByClassName(followBoxString)[1];
@@ -133,19 +133,19 @@ var scroll = function(currentElements, iterations, boxType) {
         console.log('Total iterations set: ' + NumberItr)
         console.log('Iterations: ' + iterations)
         x[0].scrollTop += scrollLength;
-        sampleArray[placeHolder] = currentElements.length
-        if (placeHolder <= 0 ) {
-            placeHolder = sampleArray.length
-        }
-        placeHolder = placeHolder - 1
+        //sampleArray[placeHolder] = currentElements.length
+        //if (placeHolder <= 0 ) {
+        //    placeHolder = sampleArray.length
+        //}
+        //placeHolder = placeHolder - 1
         
-        console.log('Sample array: ' + sampleArray)
-        console.log('Sample length: ' + sampleArray.length)
-        console.log('Place holder: ' + placeHolder)
+        //console.log('Sample array: ' + sampleArray)
+        //console.log('Sample length: ' + sampleArray.length)
+        //console.log('Place holder: ' + placeHolder)
     
-        if (allEqual(sampleArray) && sampleArray[0] != 0) {
-            iterations = sampleArray[0]
-        }
+        //if (allEqual(sampleArray) && sampleArray[0] != 0) {
+        //   iterations = sampleArray[0]
+        //}
 
         if (currentElements.length < iterations - 1) { 
             currentElements = document.getElementsByClassName(boxType);      
