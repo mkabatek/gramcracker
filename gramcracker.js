@@ -1,9 +1,12 @@
 //Instagram classes
 var followBoxString           = "g47SY"
 var unfollowModalButtonString = "aOOlW -Cab_   "
-var followButtonString        = "_0mzm- sqdOP  L3NKy       "
-var unFollowButtonString      = "_0mzm- sqdOP  L3NKy   _8A5w5    "
+var followButtonString        = "sqdOP  L3NKy   y3zKF     "
+var unFollowButtonString      = "sqdOP  L3NKy   _8A5w5    "
 var scrollBoxString           = "isgrP"
+
+var userClassString           = "wo9IH"
+var userNameClassString       = "d7ByH"
 
 var followersBoxClass = document.getElementsByClassName(followBoxString)[1];
 var followingBoxClass = document.getElementsByClassName(followBoxString)[2];
@@ -28,10 +31,10 @@ var homeUrl = rootUrl + homeName;
 var globalIndex;
 
 //looping parameters 
-var NumberItr     = 800;              //Total number of people you want to follow/unfollow
-var BaseFollowers = 450;            //Base number of followers you want to keep
-var tMax          = 120000;         //follow/unfollow time max
-var tMin          = 60000;          //follow/unfollow time min
+var NumberItr     = 20;              //Total number of people you want to follow/unfollow
+var BaseFollowers = 457;            //Base number of followers you want to keep
+var tMax          = 30000;         //follow/unfollow time max
+var tMin          = 15000;          //follow/unfollow time min
 var delta         = (tMax - tMin);  //Time interval between follow/unfollow
 var stMax         = 500;            //Scroll time max
 var stMin         = 100;            //Scroll time min
@@ -43,23 +46,29 @@ const allEqual = arr => arr.every( v => v === arr[0] )
 //Accounts you want to follow
 var masterUrlList = [
 
-"skate.explore",
-"cryanbum",
-"noeborocz",
-"ashleyaf99",
-"thecameltail",
-"tomcatberry",
-"norathenorwal",
-"cookiegrinder13",
-"emet.baker",
-"taylordehart",
-"nameinbloodsk8boards",
-"vetschtable",
-"666_rips",
-"milimeter_peeter",
-"tomcatberry"
+    "skate.explore",
+    "cryanbum",
+    "noeborocz",
+    "ashleyaf99",
+    "thecameltail",
+    "tomcatberry",
+    "norathenorwal",
+    "cookiegrinder13",
+    "emet.baker",
+    "taylordehart",
+    "nameinbloodsk8boards",
+    "vetschtable",
+    "666_rips",
+    "milimeter_peeter",
+    "tomcatberry"
 
 ];
+
+var dontFollowList = [
+
+    "daedricprincess_",
+
+]
 
 //follow/Unfollow function
 var followUnfollow = function(elem, itr, boxType){
@@ -75,8 +84,23 @@ var followerLoop = function(currentElements, numberOfFollowIter, i) {
         console.log('delta t: ' + dt);
         console.log('Total time elapsed (ms): ' + T);
         console.log('Current item: ' + i);
-        console.log('Final item: ' + (currentElements.length - numberOfFollowIter));          
-        currentElements[i-1].click();
+        console.log('Final item: ' + (currentElements.length - numberOfFollowIter));  
+        
+        //Tree traversal to get username
+        var topParent = Array.from(currentElements[i].parentNode.parentNode.children)
+        var nameContainerOuter = topParent[0]
+        var nameContainerInner = Array.from(nameContainerOuter.children)
+        var userName = nameContainerInner[1].firstChild.innerText
+        
+
+        if(dontFollowList.indexOf(userName) > -1) {
+            //Don't follow this user
+            console.log("Skipped: " + userName)
+        } else {
+            console.log("Following: " + userName)
+            currentElements[i].click();
+        }
+
         setTimeout(function(){
             var unfollowModalButton = document.getElementsByClassName(unfollowModalButtonString)[0]
             if (unfollowModalButton == undefined) {
@@ -133,26 +157,14 @@ var scroll = function(currentElements, iterations, boxType) {
         console.log('Total iterations set: ' + NumberItr)
         console.log('Iterations: ' + iterations)
         x[0].scrollTop += scrollLength;
-        //sampleArray[placeHolder] = currentElements.length
-        //if (placeHolder <= 0 ) {
-        //    placeHolder = sampleArray.length
-        //}
-        //placeHolder = placeHolder - 1
-        
-        //console.log('Sample array: ' + sampleArray)
-        //console.log('Sample length: ' + sampleArray.length)
-        //console.log('Place holder: ' + placeHolder)
-    
-        //if (allEqual(sampleArray) && sampleArray[0] != 0) {
-        //   iterations = sampleArray[0]
-        //}
 
-        if (currentElements.length < iterations - 1) { 
+
+        if (currentElements.length < iterations) { 
             currentElements = document.getElementsByClassName(boxType);      
             scroll(collectionToArray(currentElements, boxType), iterations, boxType); 
         } else {
             console.log('############## scroll finished ################')
-            followerLoop(currentElements, currentElements.length - 1, iterations - 1); 
+            followerLoop(currentElements, currentElements.length, iterations); 
         }                      
     }, dt)
 }
@@ -198,13 +210,13 @@ var interval = setInterval(function() {
                 } else {
                     itr = NumberItr
                 }
-                var elem = document.getElementsByClassName(unFollowButtonString);
+                var elem = Array.from(document.getElementsByClassName(unFollowButtonString)).slice(1);
                 console.log('BaseFollowers: ' + BaseFollowers);
                 console.log('CurrentFollower: ' + myInitialFollowers);
                 console.log('Total iterations possible: ' + possibleIterations);
                 console.log('Total iterations entered: ' + NumberItr);
             
-                followUnfollow(collectionToArray(elem), itr, unFollowButtonString);
+                followUnfollow(elem, itr, unFollowButtonString);
             }, THREE_SECOND_DELAY);
 		}
 		else{
