@@ -31,10 +31,10 @@ var homeUrl = rootUrl + homeName;
 var globalIndex;
 
 //looping parameters 
-var NumberItr     = 20;              //Total number of people you want to follow/unfollow
+var NumberItr     = 5;              //Total number of people you want to follow/unfollow
 var BaseFollowers = 457;            //Base number of followers you want to keep
-var tMax          = 30000;         //follow/unfollow time max
-var tMin          = 15000;          //follow/unfollow time min
+var tMax          = 60000;         //follow/unfollow time max
+var tMin          = 30000;          //follow/unfollow time min
 var delta         = (tMax - tMin);  //Time interval between follow/unfollow
 var stMax         = 500;            //Scroll time max
 var stMin         = 100;            //Scroll time min
