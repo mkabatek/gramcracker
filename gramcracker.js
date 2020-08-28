@@ -2,7 +2,7 @@
 var followBoxString           = "g47SY"
 var unfollowModalButtonString = "aOOlW -Cab_   "
 var followButtonString        = "sqdOP  L3NKy   y3zKF     "
-var unFollowButtonString      = "sqdOP  L3NKy   _8A5w5    "
+var unFollowButtonString      = "sqdOP  L3NKy    _8A5w5    "
 var scrollBoxString           = "isgrP"
 
 var userClassString           = "wo9IH"
@@ -31,10 +31,10 @@ var homeUrl = rootUrl + homeName;
 var globalIndex;
 
 //looping parameters 
-var NumberItr     = 5;              //Total number of people you want to follow/unfollow
+var NumberItr     = 600;              //Total number of people you want to follow/unfollow
 var BaseFollowers = 457;            //Base number of followers you want to keep
-var tMax          = 60000;         //follow/unfollow time max
-var tMin          = 30000;          //follow/unfollow time min
+var tMax          = 120000;         //follow/unfollow time max
+var tMin          = 60000;          //follow/unfollow time min
 var delta         = (tMax - tMin);  //Time interval between follow/unfollow
 var stMax         = 500;            //Scroll time max
 var stMin         = 100;            //Scroll time min
@@ -45,29 +45,24 @@ const allEqual = arr => arr.every( v => v === arr[0] )
 
 //Accounts you want to follow
 var masterUrlList = [
-
-    "skate.explore",
-    "cryanbum",
-    "noeborocz",
-    "ashleyaf99",
-    "thecameltail",
-    "tomcatberry",
-    "norathenorwal",
-    "cookiegrinder13",
-    "emet.baker",
-    "taylordehart",
+    "mrktordie",
     "nameinbloodsk8boards",
-    "vetschtable",
-    "666_rips",
-    "milimeter_peeter",
-    "tomcatberry"
-
+    "launchskate",
+    "be_kwyatt",
+    "jasonschaake",
+    "youcant.eatmoney",
+    "roeske",
+    "jahboiii561",
+    "snakenddestroy",
+    "mikethetwisterjones",
+    "bacon_dangler",
+    "megan_buttholer",
+    "coping_ferret",
+    "damnbenny"
 ];
 
 var dontFollowList = [
-
-    "daedricprincess_",
-
+    "daedricprincess_"
 ]
 
 //follow/Unfollow function
@@ -211,6 +206,7 @@ var interval = setInterval(function() {
                     itr = NumberItr
                 }
                 var elem = Array.from(document.getElementsByClassName(unFollowButtonString)).slice(1);
+                console.log(elem)
                 console.log('BaseFollowers: ' + BaseFollowers);
                 console.log('CurrentFollower: ' + myInitialFollowers);
                 console.log('Total iterations possible: ' + possibleIterations);
